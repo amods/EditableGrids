@@ -1,0 +1,80 @@
+<!Doctype html>
+<html>
+    <meta author="Amod shankar"/>
+    <title>Editable grids</title>
+    <head>
+        <style type="text/css">
+            *, *:before, *:after {
+              box-sizing: border-box;
+            }
+            tr {
+                text-align: center;
+                font-weight: bold;
+            }
+            td {
+                padding:10px 50px;
+            }
+            div {
+                width:61%;
+            }
+            a {
+                color:cornflowerblue;
+                font-family:sans-serif;
+            }
+            .btnSave {
+                float:right;
+            }
+        </style>
+    </head>
+    <body ng-app="gridApp" ng-controller="appController">
+
+        <table border="1">
+            <tr ng-repeat="x in times">
+                <td>
+                    <span ng-show="!x.i.clicked">
+                        <a href="#" ng-click="linkClicked(x.i,'d')">{{x.i.d}}</a><br /><br /><br />
+                        <a href="#" ng-click="linkClicked(x.i,'t')">{{x.i.t}}</a>
+                    </span>
+                    <div ng-show="x.i.clicked">
+                        <form novalidate>
+                            <textarea placeholder="{{x.i.d}}" ng-model="x.i.d" ng-show="descriptionClicked"></textarea>
+                            <textarea placeholder="{{x.i.t}}" ng-model="x.i.t" ng-show="titleClicked"></textarea>
+                            <button class="btnSave" ng-click="x.i.clicked=false">Save</button>
+                            <button class="btnSave" ng-click="x.i.clicked=false">Cancel</button>
+                        </form>
+                    </div>                    
+                </td>
+                <td>
+                    <span ng-show="!x.j.clicked">
+                        <a href="#" ng-click="linkClicked(x.j,'d')">{{x.j.d}}</a><br /><br /><br />
+                        <a href="#" ng-click="linkClicked(x.j,'t')">{{x.j.t}}</a>
+                    </span>
+                     <div ng-show="x.j.clicked">
+                       <form novalidate>
+                           <textarea placeholder="{{x.j.d}}" ng-model="x.j.d" ng-show="descriptionClicked"></textarea>
+                           <textarea placeholder="{{x.j.t}}" ng-model="x.j.t" ng-show="titleClicked"></textarea>
+                           <button class="btnSave" ng-click="x.j.clicked=false">Save</button>
+                           <button class="btnSave" ng-click="x.i.clicked=false">Cancel</button>
+                        </form>    
+                    </div>
+                </td>
+                <td>
+                    <span ng-show="!x.k.clicked">
+                        <a href="#" ng-click="linkClicked(x.k,'d')">{{x.k.d}}</a><br /><br /><br />
+                        <a href="#" ng-click="linkClicked(x.k,'t')">{{x.k.t}}</a>
+                    </span>
+                     <div ng-show="x.k.clicked">
+                        <form novalidate>
+                            <textarea placeholder="{{x.k.d}}" ng-model="x.k.d" ng-show="descriptionClicked"></textarea>
+                            <textarea placeholder="{{x.k.t}}" ng-model="x.k.t" ng-show="titleClicked"></textarea>
+                            <button class="btnSave" ng-click="x.k.clicked=false">Save</button>
+                            <button class="btnSave" ng-click="x.i.clicked=false">Cancel</button>
+                        </form>    
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <script type="text/javascript" src="index.js"></script>
+    </body>
+</html>
